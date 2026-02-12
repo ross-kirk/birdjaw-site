@@ -1,16 +1,16 @@
 import type { Metadata, Site, Socials } from "@types";
 
 export const SITE: Site = {
-  TITLE: "Corkscrew Software",
-  DESCRIPTION: "We are a game developer focused brand in Scotlands home of games, Dundee.",
-  EMAIL: "",
+  TITLE: "Birdjaw",
+  DESCRIPTION: "Playable campaign infrastructure for creator-led brands. Mobile-first interactive experiences for drops, launches, and brand moments.",
+  EMAIL: "hello@birdjaw.com",
   NUM_POSTS_ON_HOMEPAGE: 5,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION: "We are a game developer focused brand in Scotlands home of games, Dundee.",
+  DESCRIPTION: "Playable campaign infrastructure for creator-led brands. Mobile-first interactive experiences for drops, launches, and brand moments.",
 };
 
 export const BLOG: Metadata = {

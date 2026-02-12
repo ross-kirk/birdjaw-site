@@ -2,30 +2,28 @@
 
 @plugin '@tailwindcss/typography';
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
-  --font-sans: Geist Sans, ui-sans-serif, system-ui, sans-serif,
+  --font-sans: 'Geist Sans', ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-mono: Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco,
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  /* Editorial, grounded B2B palette */
+  --color-surface: #f6f5f3;
+  --color-surface-elevated: #ffffff;
+  --color-ink: #0f1113;
+  --color-ink-muted: #5c6370;
+  --color-border: #e5e4e2;
+  --color-accent: #0f1113;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-border, currentColor);
   }
 }
 
@@ -33,11 +31,7 @@
   html {
     overflow-y: auto;
     color-scheme: light;
-    scroll-padding-top: 100px;
-  }
-
-  html.dark {
-    color-scheme: dark;
+    scroll-padding-top: 2rem;
   }
 
   html,
@@ -48,40 +42,38 @@
   body {
     @apply font-sans antialiased;
     @apply flex flex-col;
-    @apply bg-neutral-100 dark:bg-neutral-900;
-    @apply text-black/75 dark:text-white/75;
+    @apply bg-surface;
+    @apply text-ink;
   }
 
   header {
-    @apply fixed left-0 right-0 top-0 z-50 py-6;
-    @apply bg-neutral-100/75 dark:bg-neutral-900/75;
-    @apply saturate-200 backdrop-blur-xs;
+    @apply py-6;
   }
 
   main {
-    @apply flex flex-1 flex-col items-center justify-center py-24;
+    @apply flex flex-1 flex-col items-center justify-center pt-8 pb-32;
   }
 
   footer {
-    @apply py-6 text-sm;
+    @apply py-8 text-sm text-ink-muted;
   }
 
   article {
-    @apply prose prose-neutral max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+    @apply prose prose-neutral max-w-full prose-img:mx-auto prose-img:my-auto;
     @apply prose-headings:font-semibold;
-    @apply prose-headings:text-black dark:prose-headings:text-white;
+    @apply prose-headings:text-ink;
   }
 }
 
 @layer utilities {
   article a {
     @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-black/30 dark:decoration-white/30;
-    @apply transition-colors duration-300 ease-in-out;
+    @apply decoration-ink/40;
+    @apply transition-colors duration-200;
   }
   article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/50 dark:decoration-white/50;
+    @apply text-ink;
+    @apply decoration-ink;
   }
 }
 
@@ -102,48 +94,32 @@ html.scrolled #back-to-top {
   @apply pointer-events-auto opacity-100;
 }
 
-/* shiki config */
 pre {
-  @apply border border-black/15 py-5 dark:border-white/20;
+  @apply border border-border py-5;
 }
 
 :root {
-  --astro-code-foreground: #09090b;
-  --astro-code-background: #fafafa;
-  --astro-code-token-comment: #a19595;
-  --astro-code-token-keyword: #f47067;
-  --astro-code-token-string: #00a99a;
-  --astro-code-token-function: #429996;
-  --astro-code-token-constant: #2b70c5;
-  --astro-code-token-parameter: #4e8fdf;
-  --astro-code-token-string-expression: #ae42a0;
-  --astro-code-token-punctuation: #8996a3;
-  --astro-code-token-link: #8d85ff;
+  --astro-code-foreground: #0f1113;
+  --astro-code-background: #f6f5f3;
+  --astro-code-token-comment: #5c6370;
+  --astro-code-token-keyword: #c678dd;
+  --astro-code-token-string: #98c379;
+  --astro-code-token-function: #61afef;
+  --astro-code-token-constant: #d19a66;
+  --astro-code-token-parameter: #e06c75;
+  --astro-code-token-string-expression: #e06c75;
+  --astro-code-token-punctuation: #abb2bf;
+  --astro-code-token-link: #61afef;
 }
 
-.dark {
-  --astro-code-foreground: #fafafa;
-  --astro-code-background: #09090b;
-  --astro-code-token-comment: #a19595;
-  --astro-code-token-keyword: #f47067;
-  --astro-code-token-string: #00a99a;
-  --astro-code-token-function: #6eafad;
-  --astro-code-token-constant: #b3cceb;
-  --astro-code-token-parameter: #4e8fdf;
-  --astro-code-token-string-expression: #bf7db6;
-  --astro-code-token-punctuation: #8996a3;
-  --astro-code-token-link: #8d85ff;
-}
-
-/* copy code button on codeblocks */
 .copy-code {
-  @apply absolute right-3 top-3 grid size-9 place-content-center rounded-sm border border-black/15 bg-neutral-100 text-center duration-300 ease-in-out dark:border-white/20 dark:bg-neutral-900;
+  @apply absolute right-3 top-3 grid size-9 place-content-center rounded border border-border bg-surface text-center duration-200;
 }
 
 .copy-code:hover {
-  @apply bg-[#E9E9E9] transition-colors dark:bg-[#232323];
+  @apply bg-surface-elevated transition-colors;
 }
 
 .copy-code:active {
-  @apply scale-90 transition-transform;
+  @apply scale-95 transition-transform;
 }

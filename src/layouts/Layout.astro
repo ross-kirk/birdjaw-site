@@ -7,9 +7,10 @@ import { SITE } from "@consts";
 type Props = {
   title: string;
   description: string;
+  fullPage?: boolean;
 };
 
-const { title, description } = Astro.props;
+const { title, description, fullPage = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,7 +20,7 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <Header />
-    <main>
+    <main class={fullPage ? "!justify-start" : ""}>
       <slot />
     </main>
     <Footer />
