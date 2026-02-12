@@ -59,7 +59,7 @@
   }
 
   main {
-    @apply flex-1 py-32;
+    @apply flex flex-1 flex-col items-center justify-center py-24;
   }
 
   footer {
