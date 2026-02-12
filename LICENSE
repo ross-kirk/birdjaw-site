@@ -1,3 +1,9 @@
+This project is derived from Astro Micro (https://github.com/trevortylerlee/astro-micro),
+which is a fork of Astro Nano by Mark Horn. The following MIT license applies to the
+original Astro Micro source code and its predecessors.
+
+---
+
 MIT License
 
 Copyright (c) 2024 Trevor Lee
@@ -19,3 +25,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Copyright (c) 2026 Birdjaw. All rights reserved.
+
+The modifications, additions, and original content in this project are proprietary and
+not licensed for use by third parties. This notice does not alter the MIT license
+terms that apply to the prior work referenced above.
